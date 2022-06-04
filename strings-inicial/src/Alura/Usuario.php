@@ -2,28 +2,31 @@
 
 namespace App\Alura;
 
-class Usuario
+class Usuario extends ValidaCPF
 {
     private $nome;
     private $sobrenome;
     private $senha;
     private $tratamento;
 
-    public function __construct(string $nome, string $senha, string $genero)
+    public function __construct(string $nome, string $senha, string $genero, string $cpf)
     {
         $nomeSobrenome = explode(" ", $nome, 2);
 
         if($nomeSobrenome[0] === ''){
             $this->nome = 'Nome inválido';
-        } else {
-            $this->nome = $nomeSobrenome[0];
+            return;
         }
+        $this->nome = $nomeSobrenome[0];
+
 
         if($nomeSobrenome[1] === null){
             $this->sobrenome = 'Sobrenome inválido';
-        } else {
-            $this->sobrenome = $nomeSobrenome[1];
+            return;
         }
+        $this->sobrenome = $nomeSobrenome[1];
+
+        parent::__construct($cpf);
 
         $this->validaSenha($senha);
         $this->adicionaTratamentoAoNome($nome, $genero);
@@ -50,9 +53,10 @@ class Usuario
         $tamanhoSenha = strlen(trim($senha));
         if ($tamanhoSenha > 6){
             $this->senha = $senha;
-        } else {
-            $this->senha = "Senha inválida!";
+            return;
         }
+        $this->senha = "Senha inválida!";
+
     }
 
     private function adicionaTratamentoAoNome(string $nome, string $genero)

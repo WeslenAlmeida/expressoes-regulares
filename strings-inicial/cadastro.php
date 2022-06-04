@@ -2,7 +2,7 @@
 
 require 'autoload.php';
 
-$usuario = new App\Alura\Usuario($_POST['nome'], $_POST['senha'], $_POST['genero']);
+$usuario = new App\Alura\Usuario($_POST['nome'], $_POST['senha'], $_POST['genero'], $_POST['cpf']);
 $contato = new App\Alura\Contato($_POST['email'], $_POST['endereco'], $_POST['cep'], $_POST['telefone']);
 
 ?>
@@ -21,6 +21,7 @@ $contato = new App\Alura\Contato($_POST['email'], $_POST['endereco'], $_POST['ce
 <h1>Cadastro feito com sucesso.</h1>
 <p> <?php echo htmlspecialchars($usuario->getTratamento())?>, seguem os dados de sua conta:</p>
 <ul class="list-group">
+    <li class="list-group-item">CPF: <?php echo htmlspecialchars($usuario->getCpf()); ?></li>
     <li class="list-group-item">Primeiro nome: <?php echo htmlspecialchars($usuario->getNome()); ?></li>
     <li class="list-group-item">Sobrenome: <?php echo htmlspecialchars($usuario->getSobrenome()); ?></li>
     <li class="list-group-item">Usuário: <?php echo htmlspecialchars($contato->getUsuario())?></li>

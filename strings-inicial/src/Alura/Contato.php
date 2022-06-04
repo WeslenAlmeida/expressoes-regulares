@@ -16,15 +16,17 @@ class Contato
 
         if ($this->validaEmail($email) !== false){
             $this->setEmail($email);
-        } else {
-            $this->setEmail('Email inválido');
+            return;
         }
+        $this->setEmail('Email inválido');
+
 
         if ($this->validaTelefone($telefone)){
             $this->setTelefone($telefone);
-        } else {
-            $this->setTelefone('Telefone inválido!');
+            return;
         }
+        $this->setTelefone('Telefone inválido!');
+
     }
 
     private function validaTelefone(string $telefone): int

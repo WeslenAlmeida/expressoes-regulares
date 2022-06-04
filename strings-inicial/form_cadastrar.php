@@ -12,6 +12,12 @@
     <h1>Formulário de cadastro loja virtual</h1>
 
         <form action="/cadastro.php" method="post">
+
+            <div class="form-group">
+                <label for="cpf">CPF: </label>
+                <input type="text" id="cpf" name="cpf" class="form-control" placeholder="Digite seu CPF">
+            </div>
+
             <div class="form-group">
                 <label for="nome">Nome: </label>
                 <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome">
